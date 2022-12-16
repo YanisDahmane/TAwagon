@@ -1,0 +1,25 @@
+<div class="all" data-controller="proposition">
+  <h1>Parties : </h1>
+  <h2>Lettres : <%= @party.tee_letters_list %></h2>
+
+  <% if @validated %>
+    <h2>Vous avez gagné</h2>
+    <h3>Score : <%= @proposition.size %></h3>
+    <% if @next_party%>
+      <%= link_to "party suivante", party_path(@next_party)%>
+    <%else%>
+      <h2>Vous avez fini le jeu</h2>
+      <%= link_to "Retourner au dash board", root_path()%>
+    <%end%>
+    <div class="solution">
+      <% @party.solutions.each do |solution| %>
+        <p><%= solution.word %></p>
+      <% end %>
+    </div>
+  <%else%>
+    <h2>Faite une proposition</h2>
+    <input type="text" id="name" name="name" data-proposition-target="input">
+    <button id="submit" data-action="click->proposition#click">Submit</button>
+  <%end%>
+
+</div>

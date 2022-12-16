@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+puts "Resetting database..."
+# Solution.destroy_all
+Party.destroy_all
+Game.destroy_all
+PartySolution.destroy_all
+
+puts "Creating solutions..."
+
+File.read("words.txt").each_line do |line|
+  Solution.create(word: line.gsub("\n", ""))
+end

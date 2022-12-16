@@ -1,2 +1,14 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Hello <%= @user.email %></h1>
+<p>Vous avez <%= @games.size %> partie joué</p>
+
+<%= link_to "nouvelle game", new_game_path()%>
+
+
+
+<% @games.each_with_index do |game, index| %>
+  <div class="games">
+    <h2>Partie n°<%= index + 1 %></h2>
+    <p>Score : <%= game.score %></p>
+    <p><%= game.created_at %></p>
+  </div>
+<% end %>

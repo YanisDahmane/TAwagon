@@ -1,0 +1,7 @@
+<h1>Voici toute les parties :</h1>
+
+<% @parties.each_with_index do |party, index| %>
+  <h2>Party : <%= index + 1 %></h2>
+  <p>Lettres : <%= party.tee_letters_list %></p>
+  <%= link_to 'Jouer la partie', party_path(party)%>
+<% end %>
